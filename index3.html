@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Educational Consultancy - Expert Educational Guidance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            50% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .tokyo-skyline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath d='M0,400 L0,350 L50,350 L50,300 L100,300 L100,250 L150,250 L150,200 L200,200 L200,150 L250,150 L250,100 L300,100 L300,80 L350,80 L350,60 L400,60 L400,40 L450,40 L450,20 L500,20 L500,0 L550,0 L550,30 L600,30 L600,50 L650,50 L650,70 L700,70 L700,90 L750,90 L750,110 L800,110 L800,130 L850,130 L850,160 L900,160 L900,180 L950,180 L950,220 L1000,220 L1000,260 L1050,260 L1050,300 L1100,300 L1100,340 L1150,340 L1150,380 L1200,380 L1200,400 Z' fill='%23000000'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-position: bottom;
+            background-size: 1200px 400px;
+        }
+        
+        .tokyo-temple {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cg fill='%23000000'%3E%3Cpath d='M100,500 L100,400 L120,400 L120,350 L180,350 L180,400 L200,400 L200,500 Z'/%3E%3Cpath d='M110,350 L110,320 L190,320 L190,350'/%3E%3Cpath d='M120,320 L120,300 L180,300 L180,320'/%3E%3Cpath d='M130,300 L130,280 L170,280 L170,300'/%3E%3Cpath d='M300,500 L300,380 L320,380 L320,330 L380,330 L380,380 L400,380 L400,500 Z'/%3E%3Cpath d='M310,330 L310,300 L390,300 L390,330'/%3E%3Cpath d='M320,300 L320,280 L380,280 L380,300'/%3E%3Cpath d='M330,280 L330,260 L370,260 L370,280'/%3E%3Cpath d='M340,260 L340,240 L360,240 L360,260'/%3E%3Cpath d='M500,500 L500,420 L520,420 L520,370 L580,370 L580,420 L600,420 L600,500 Z'/%3E%3Cpath d='M510,370 L510,340 L590,340 L590,370'/%3E%3Cpath d='M520,340 L520,320 L580,320 L580,340'/%3E%3Cpath d='M530,320 L530,300 L570,300 L570,320'/%3E%3Cpath d='M80,520 L80,510 L220,510 L220,520'/%3E%3Cpath d='M280,520 L280,510 L420,510 L420,520'/%3E%3Cpath d='M480,520 L480,510 L620,510 L620,520'/%3E%3Cpath d='M50,480 L50,470 L250,470 L250,480'/%3E%3Cpath d='M270,480 L270,470 L430,470 L430,480'/%3E%3Cpath d='M450,480 L450,470 L650,470 L650,480'/%3E%3Cpath d='M150,200 L150,180 L200,180 L200,160 L250,160 L250,180 L300,180 L300,200'/%3E%3Cpath d='M350,220 L350,200 L400,200 L400,180 L450,180 L450,200 L500,200 L500,220'/%3E%3Cpath d='M550,240 L550,220 L600,220 L600,200 L650,200 L650,220 L700,220 L700,240'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 800px 600px;
+        }
+        
+        /* Typewriter animation styles */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #f97316;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #f97316; }
+        }
+        
+        .bounce-arrow {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ripple-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple-effect::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .ripple-effect:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .floating-label {
+            position: relative;
+        }
+        
+        .floating-label input,
+        .floating-label textarea {
+            width: 100%;
+            padding: 15px 10px 5px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-label label {
+            position: absolute;
+            left: 10px;
+            top: 15px;
+            color: #9ca3af;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .floating-label input:focus,
+        .floating-label textarea:focus,
+        .floating-label input:not(:placeholder-shown),
+        .floating-label textarea:not(:placeholder-shown) {
+            border-color: #3b82f6;
+            outline: none;
+        }
+        
+        .floating-label input:focus + label,
+        .floating-label textarea:focus + label,
+        .floating-label input:not(:placeholder-shown) + label,
+        .floating-label textarea:not(:placeholder-shown) + label {
+            top: 5px;
+            font-size: 12px;
+            color: #3b82f6;
+        }
+        
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chatbot-window {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 400px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            animation: chatbotSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes chatbotSlideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .progress-bar {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+        
+        .dark-mode {
+            background-color: #1f2937;
+            color: white;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #374151;
+        }
+        
+        .dark-mode .text-gray-800 {
+            color: #f3f4f6;
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: #d1d5db;
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .preloader-logo {
+            font-size: 3rem;
+            color: white;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .navbar-mobile {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .navbar-mobile.active {
+            transform: translateX(0);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-content.active {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-logo">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-600">
+                    <i class="fas fa-graduation-cap mr-2"></i>AI Educational Consultancy
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">About</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Services</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Success Stories</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Contact</a>
+                </div>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-300">
+                        <i class="fas fa-moon text-gray-700"></i>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2">
+                        <i class="fas fa-bars text-gray-700 text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="navbar-mobile fixed top-0 right-0 h-full w-64 bg-white shadow-lg md:hidden">
+            <div class="p-6">
+                <button id="closeMobileMenu" class="float-right text-2xl text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="mt-8 space-y-4">
+                    <a href="#home" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Home</a>
+                    <a href="#about" class="block nav-link text-gray-700 hover:text-blue-600 py-2">About</a>
+                    <a href="#services" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Services</a>
+                    <a href="#testimonials" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Success Stories</a>
+                    <a href="#contact" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen gradient-bg relative overflow-hidden">
+        <div class="tokyo-skyline"></div>
+        
+        <!-- Particles -->
+        <div class="particle" style="left: 10%; top: 20%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; top: 60%; width: 6px; height: 6px; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 70%; top: 30%; width: 8px; height: 8px; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 80%; top: 70%; width: 5px; height: 5px; animation-delay: 3s;"></div>
+        
+        <div class="container mx-auto px-6 pt-32 pb-16 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center min-h-screen">
+                <div class="text-white">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        Your Gateway to
+                        <span class="gradient-orange bg-clip-text text-transparent">Success</span>
+                    </h1>
+                    
+                    <!-- Typewriter element -->
+                    <div class="text-xl md:text-2xl mb-8 opacity-90">
+                        <span id="typewriter" class="typewriter">Empowering Dreams Through Education</span>
+                    </div>
+                    
+                    <p class="text-xl mb-8 opacity-90">
+                        AI-powered educational consultancy helping students achieve their dreams with personalized guidance and expert support.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button id="getConsultationBtn" class="ripple-effect bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                            Get Consultation
+                        </button>
+                        <button id="learnMoreBtn" class="ripple-effect border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-full font-semibold transition-all duration-300">
+                            Learn More
+                        </button>
+                        <button id="contactUsBtn" class="ripple-effect bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300">
+                            Contact Us
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 transform hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-graduation-cap text-8xl text-white mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">1000+ Success Stories</h3>
+                        <p class="text-white/80">Join thousands of students who achieved their educational goals with our guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div class="bounce-arrow text-white text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 relative">
+        <div class="tokyo-temple"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">About AI Educational Consultancy</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    We are a leading AI-powered educational consultancy dedicated to transforming lives through personalized guidance and innovative solutions.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Our Mission</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        To empower students worldwide with cutting-edge AI technology and expert human guidance, making quality education accessible to everyone regardless of their background or location.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-robot text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">AI-Powered Matching</h4>
+                                <p class="text-gray-600">Advanced algorithms match you with perfect opportunities</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-orange-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Expert Counselors</h4>
+                                <p class="text-gray-600">Certified professionals with years of experience</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-line text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Proven Results</h4>
+                                <p class="text-gray-600">95% success rate in university admissions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slide-in-right">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Our Expertise</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 font-medium">University Admissions</span>
+                                    <span class="text-blue-600 font-bold">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="progress-bar bg-blue-600 h-3 rounded-full" data-width="95"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 font-medium">Scholarship Success</span>
+                                    <span class="text-orange-600 font-bold">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="progress-bar bg-orange-600 h-3 rounded-full" data-width="88"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 font-medium">Career Guidance</span>
+                                    <span class="text-green-600 font-bold">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="progress-bar bg-green-600 h-3 rounded-full" data-width="92"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div class="counter" data-target="1000">0</div>
+                                <p class="text-gray-600">Students Guided</p>
+                            </div>
+                            <div>
+                                <div class="counter" data-target="50">0</div>
+                                <p class="text-gray-600">Partner Universities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white relative">
+        <div class="tokyo-temple"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    Comprehensive educational solutions tailored to your unique needs and aspirations.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-university text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">University Admissions</h3>
+                    <p class="text-gray-600 mb-6">Expert guidance for undergraduate and graduate admissions to top universities worldwide.</p>
+                    
+                    <div class="accordion-content mb-4">
+                        <ul class="text-left text-gray-600 space-y-2">
+                            <li>• Application strategy development</li>
+                            <li>• Essay writing assistance</li>
+                            <li>• Interview preparation</li>
+                            <li>• Document verification</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button class="read-more-btn w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition-colors duration-300">
+                            Read More
+                        </button>
+                        <button class="apply-now-btn w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white py-2 px-4 rounded-full transition-all duration-300">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 text-center">
+                    <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Scholarship Assistance</h3>
+                    <p class="text-gray-600 mb-6">Maximize your chances of securing scholarships and financial aid for your education.</p>
+                    
+                    <div class="accordion-content mb-4">
+                        <ul class="text-left text-gray-600 space-y-2">
+                            <li>• Scholarship database access</li>
+                            <li>• Application optimization</li>
+                            <li>• Merit-based guidance</li>
+                            <li>• Financial planning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button class="read-more-btn w-full bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-full transition-colors duration-300">
+                            Read More
+                        </button>
+                        <button class="apply-now-btn w-full border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white py-2 px-4 rounded-full transition-all duration-300">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 text-center">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-compass text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Career Guidance</h3>
+                    <p class="text-gray-600 mb-6">Personalized career counseling to help you choose the right path for your future.</p>
+                    
+                    <div class="accordion-content mb-4">
+                        <ul class="text-left text-gray-600 space-y-2">
+                            <li>• Aptitude assessments</li>
+                            <li>• Industry insights</li>
+                            <li>• Skill development plans</li>
+                            <li>• Networking opportunities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button class="read-more-btn w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full transition-colors duration-300">
+                            Read More
+                        </button>
+                        <button class="apply-now-btn w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white py-2 px-4 rounded-full transition-all duration-300">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50 relative">
+        <div class="tokyo-temple"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Success Stories</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    Hear from our successful students who achieved their dreams with our guidance.
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div id="testimonialCarousel" class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-in-out" id="testimonialSlider">
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white rounded-3xl p-8 shadow-xl max-w-4xl mx-auto">
+                                <div class="flex items-center mb-6">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%233b82f6'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E" alt="Student" class="w-15 h-15 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800">Sarah Johnson</h4>
+                                        <p class="text-gray-600">Harvard University, Computer Science</p>
+                                        <div class="flex text-yellow-400 mt-1">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg italic">
+                                    "AI Educational Consultancy transformed my application process. Their AI-powered matching system helped me find the perfect program, and their counselors provided invaluable guidance. I'm now studying at my dream university!"
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white rounded-3xl p-8 shadow-xl max-w-4xl mx-auto">
+                                <div class="flex items-center mb-6">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23f97316'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E" alt="Student" class="w-15 h-15 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800">Michael Chen</h4>
+                                        <p class="text-gray-600">MIT, Engineering</p>
+                                        <div class="flex text-yellow-400 mt-1">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg italic">
+                                    "The scholarship assistance program was incredible. I received a full scholarship to MIT thanks to their expert guidance and application optimization strategies. Highly recommended!"
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white rounded-3xl p-8 shadow-xl max-w-4xl mx-auto">
+                                <div class="flex items-center mb-6">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%2310b981'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E" alt="Student" class="w-15 h-15 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800">Aisha Patel</h4>
+                                        <p class="text-gray-600">Oxford University, Medicine</p>
+                                        <div class="flex text-yellow-400 mt-1">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg italic">
+                                    "The career guidance sessions helped me discover my passion for medicine. The personalized approach and continuous support made all the difference in my journey to Oxford."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="prevTestimonial" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </button>
+                <button id="nextTestimonial" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <i class="fas fa-chevron-right text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="tokyo-temple"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Get In Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    Ready to start your educational journey? Contact us today for a personalized consultation.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="slide-in-left">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Address</h4>
+                                <p class="text-gray-600">123 Education Street, Tokyo, Japan</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-orange-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+81 3-1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">info@aieduconsultancy.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-colors duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slide-in-right">
+                    <form id="contactForm" class="bg-gray-50 rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="floating-label">
+                                <input type="text" id="name" name="name" placeholder=" " required>
+                                <label for="name">Full Name</label>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <input type="email" id="email" name="email" placeholder=" " required>
+                                <label for="email">Email Address</label>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <input type="tel" id="phone" name="phone" placeholder=" ">
+                                <label for="phone">Phone Number</label>
+                            </div>
+                            
+                            <div class="floating-label">
+                                <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                                <span class="submit-text">Send Message</span>
+                                <i class="fas fa-spinner fa-spin hidden submit-spinner"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-16 relative">
+        <div class="tokyo-skyline"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <i class="fas fa-graduation-cap mr-2"></i>AI Educational Consultancy
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Empowering students worldwide with AI-powered educational consultancy and expert guidance.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">University Admissions</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Scholarship Assistance</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Career Guidance</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Test Preparation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#about" class="hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Our Services</a></li>
+                        <li><a href="#testimonials" class="hover:text-white transition-colors duration-300">Success Stories</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Stay updated with the latest educational opportunities and tips.</p>
+                    <form id="newsletterForm" class="space-y-3">
+                        <div class="floating-label">
+                            <input type="email" id="newsletterEmail" name="email" placeholder=" " required class="w-full bg-gray-700 border border-gray-600 text-white">
+                            <label for="newsletterEmail" class="text-gray-400">Your Email</label>
+                        </div>
+                        <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-full font-semibold transition-colors duration-300">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 AI Educational Consultancy. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-t-3xl">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-bold">Book Your Consultation</h3>
+                    <button class="close text-white text-2xl hover:text-gray-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <form id="consultationForm" class="space-y-4">
+                    <div class="floating-label">
+                        <input type="text" id="consultName" name="name" placeholder=" " required>
+                        <label for="consultName">Full Name</label>
+                    </div>
+                    
+                    <div class="floating-label">
+                        <input type="email" id="consultEmail" name="email" placeholder=" " required>
+                        <label for="consultEmail">Email Address</label>
+                    </div>
+                    
+                    <div class="floating-label">
+                        <select id="consultService" name="service" required class="w-full p-3 border-2 border-gray-300 rounded-lg">
+                            <option value="">Select Service</option>
+                            <option value="university">University Admissions</option>
+                            <option value="scholarship">Scholarship Assistance</option>
+                            <option value="career">Career Guidance</option>
+                        </select>
+                    </div>
+                    
+                    <div class="floating-label">
+                        <input type="date" id="consultDate" name="date" placeholder=" " required>
+                        <label for="consultDate">Preferred Date</label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-full font-semibold transition-colors duration-300">
+                        Book Consultation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-gradient-to-r from-orange-600 to-red-600 text-white p-6 rounded-t-3xl">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-bold">Service Registration</h3>
+                    <button class="close text-white text-2xl hover:text-gray-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <form id="registrationForm" class="space-y-4">
+                    <div class="floating-label">
+                        <input type="text" id="regName" name="name" placeholder=" " required>
+                        <label for="regName">Full Name</label>
+                    </div>
+                    
+                    <div class="floating-label">
+                        <input type="email" id="regEmail" name="email" placeholder=" " required>
+                        <label for="regEmail">Email Address</label>
+                    </div>
+                    
+                    <div class="floating-label">
+                        <input type="tel" id="regPhone" name="phone" placeholder=" " required>
+                        <label for="regPhone">Phone Number</label>
+                    </div>
+                    
+                    <div class="floating-label">
+                        <select id="regEducation" name="education" required class="w-full p-3 border-2 border-gray-300 rounded-lg">
+                            <option value="">Current Education Level</option>
+                            <option value="high-school">High School</option>
+                            <option value="undergraduate">Undergraduate</option>
+                            <option value="graduate">Graduate</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 px-6 rounded-full font-semibold transition-colors duration-300">
+                        Register Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button id="chatbotBtn" class="w-16 h-16 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
+            <i class="fas fa-comments text-xl"></i>
+        </button>
+        
+        <div id="chatbotWindow" class="chatbot-window">
+            <div class="bg-blue-600 text-white p-4 rounded-t-3xl">
+                <div class="flex justify-between items-center">
+                    <h4 class="font-semibold">EduBot Assistant</h4>
+                    <button id="closeChatbot" class="text-white hover:text-gray-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-4 h-80 overflow-y-auto" id="chatMessages">
+                <div class="bg-gray-100 rounded-lg p-3 mb-3">
+                    <p class="text-sm text-gray-700">Hello! I'm EduBot. How can I help you with your educational journey today?</p>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t">
+                <div class="flex space-x-2">
+                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 p-2 border border-gray-300 rounded-full text-sm">
+                    <button id="sendMessage" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full transition-colors duration-300">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 1500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('active');
+        });
+
+        document.getElementById('closeMobileMenu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('active');
+        });
+
+        // Button functionality
+        document.getElementById('getConsultationBtn').addEventListener('click', function() {
+            document.getElementById('consultationModal').style.display = 'block';
+        });
+
+        document.getElementById('learnMoreBtn').addEventListener('click', function() {
+            document.querySelector('#about').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        document.getElementById('contactUsBtn').addEventListener('click', function() {
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Modal functionality
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+        // Service card accordion and apply buttons
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const accordionContent = this.parentElement.previousElementSibling;
+                accordionContent.classList.toggle('active');
+                this.textContent = accordionContent.classList.contains('active') ? 'Read Less' : 'Read More';
+            });
+        });
+
+        document.querySelectorAll('.apply-now-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('registrationModal').style.display = 'block';
+            });
+        });
+
+        // Testimonial carousel
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('#testimonialSlider > div');
+        const totalTestimonials = testimonials.length;
+
+        function showTestimonial(index) {
+            const slider = document.getElementById('testimonialSlider');
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        document.getElementById('nextTestimonial').addEventListener('click', function() {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            showTestimonial(currentTestimonial);
+        });
+
+        document.getElementById('prevTestimonial').addEventListener('click', function() {
+            currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            showTestimonial(currentTestimonial);
+        });
+
+        // Auto-slide testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const submitText = submitBtn.querySelector('.submit-text');
+            const submitSpinner = submitBtn.querySelector('.submit-spinner');
+            
+            submitText.classList.add('hidden');
+            submitSpinner.classList.remove('hidden');
+            
+            setTimeout(() => {
+                submitText.classList.remove('hidden');
+                submitSpinner.classList.add('hidden');
+                alert('Message sent successfully! We will get back to you soon.');
+                this.reset();
+            }, 2000);
+        });
+
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Consultation booked successfully! We will contact you soon.');
+            document.getElementById('consultationModal').style.display = 'none';
+            this.reset();
+        });
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration successful! Welcome to AI Educational Consultancy.');
+            document.getElementById('registrationModal').style.display = 'none';
+            this.reset();
+        });
+
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Successfully subscribed to our newsletter!');
+            this.reset();
+        });
+
+        // Chatbot functionality
+        document.getElementById('chatbotBtn').addEventListener('click', function() {
+            document.getElementById('chatbotWindow').style.display = 'block';
+        });
+
+        document.getElementById('closeChatbot').addEventListener('click', function() {
+            document.getElementById('chatbotWindow').style.display = 'none';
+        });
+
+        document.getElementById('sendMessage').addEventListener('click', sendChatMessage);
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                
+                // Add user message
+                chatMessages.innerHTML += `
+                    <div class="text-right mb-3">
+                        <div class="bg-blue-600 text-white rounded-lg p-3 inline-block max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Add bot response
+                setTimeout(() => {
+                    const responses = [
+                        "I'd be happy to help you with your educational goals! What specific area are you interested in?",
+                        "That's a great question! Our counselors can provide detailed guidance on that topic.",
+                        "I recommend scheduling a consultation with our experts for personalized advice.",
+                        "We have helped many students with similar goals. Would you like to know more about our services?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    
+                    chatMessages.innerHTML += `
+                        <div class="bg-gray-100 rounded-lg p-3 mb-3">
+                            <p class="text-sm text-gray-700">${randomResponse}</p>
+                        </div>
+                    `;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+                
+                input.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate progress bars
+                    if (entry.target.querySelector('.progress-bar')) {
+                        entry.target.querySelectorAll('.progress-bar').forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width + '%';
+                            }, 500);
+                        });
+                    }
+                    
+                    // Animate counters
+                    if (entry.target.querySelector('.counter')) {
+                        entry.target.querySelectorAll('.counter').forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            let current = 0;
+                            const increment = target / 100;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                counter.textContent = Math.floor(current) + '+';
+                            }, 20);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Observe sections with progress bars and counters
+        observer.observe(document.querySelector('#about'));
+
+        // Typewriter effect - ADDED CODE
+        const texts = [
+            'Empowering Dreams Through Education',
+            'Your Success is Our Mission',
+            'Expert Guidance for Global Education',
+            'Building Futures, One Student at a Time'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function typeWriter() {
+            if (charIndex < texts[textIndex].length) {
+                typewriterElement.textContent += texts[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(eraseText, 2000);
+            }
+        }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                typewriterElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, 50);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        // Start typewriter effect
+        setTimeout(typeWriter, 1000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ed37f884217674',t:'MTc1NzgyNDk1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
