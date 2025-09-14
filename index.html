@@ -48,7 +48,7 @@
             background-size: 1200px 400px;
         }
         
-        .tokyo-temple {
+        .temple-watermark {
             position: absolute;
             top: 0;
             left: 0;
@@ -60,7 +60,6 @@
             background-size: 800px 600px;
         }
         
-        /* Typewriter animation styles */
         .typewriter {
             overflow: hidden;
             border-right: 3px solid #f97316;
@@ -317,6 +316,138 @@
         .accordion-content.active {
             max-height: 200px;
         }
+        
+        /* New styles for floating buttons */
+        .floating-buttons {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .floating-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .floating-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .whatsapp-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+        
+        .phone-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* Founder section styles */
+        .founder-card {
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* FAQ styles */
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: #3b82f6;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Enhanced temple watermark */
+        .enhanced-temple {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cg fill='%23000000'%3E%3Cpath d='M400,100 L450,150 L400,200 L350,150 Z' fill='%23667eea'/%3E%3Cpath d='M200,300 L250,350 L200,400 L150,350 Z' fill='%23f97316'/%3E%3Cpath d='M600,300 L650,350 L600,400 L550,350 Z' fill='%2310b981'/%3E%3Cpath d='M100,500 L100,400 L120,400 L120,350 L180,350 L180,400 L200,400 L200,500 Z'/%3E%3Cpath d='M300,500 L300,380 L320,380 L320,330 L380,330 L380,380 L400,380 L400,500 Z'/%3E%3Cpath d='M500,500 L500,420 L520,420 L520,370 L580,370 L580,420 L600,420 L600,500 Z'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 800px 600px;
+            pointer-events: none;
+        }
+        
+        /* Animations for founder section */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-founder {
+            animation: fadeInScale 1s ease-out forwards;
+        }
+        
+        /* Text animation for FAQ */
+        .text-gradient-animation {
+            background: linear-gradient(90deg, #667eea, #f97316, #10b981);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+        }
+        
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -325,6 +456,16 @@
         <div class="preloader-logo">
             <i class="fas fa-graduation-cap"></i>
         </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/9779804918250" target="_blank" class="floating-button whatsapp-button">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+9779804918250" class="floating-button phone-button">
+            <i class="fas fa-phone"></i>
+        </a>
     </div>
 
     <!-- Navigation -->
@@ -340,7 +481,9 @@
                     <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Home</a>
                     <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">About</a>
                     <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Services</a>
+                    <a href="#founder" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Founder</a>
                     <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Success Stories</a>
+                    <a href="#faq" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">FAQ</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300">Contact</a>
                 </div>
                 
@@ -368,7 +511,9 @@
                     <a href="#home" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Home</a>
                     <a href="#about" class="block nav-link text-gray-700 hover:text-blue-600 py-2">About</a>
                     <a href="#services" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Services</a>
+                    <a href="#founder" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Founder</a>
                     <a href="#testimonials" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Success Stories</a>
+                    <a href="#faq" class="block nav-link text-gray-700 hover:text-blue-600 py-2">FAQ</a>
                     <a href="#contact" class="block nav-link text-gray-700 hover:text-blue-600 py-2">Contact</a>
                 </div>
             </div>
@@ -435,7 +580,7 @@
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50 relative">
-        <div class="tokyo-temple"></div>
+        <div class="enhanced-temple"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">About AI Educational Consultancy</h2>
@@ -538,7 +683,7 @@
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white relative">
-        <div class="tokyo-temple"></div>
+        <div class="enhanced-temple"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Our Services</h2>
@@ -629,9 +774,57 @@
         </div>
     </section>
 
+    <!-- Founder Section -->
+    <section id="founder" class="py-20 bg-gray-50 relative">
+        <div class="enhanced-temple"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Word from Our Founder</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    Hear directly from the visionary behind AI Educational Consultancy
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="founder-card bg-white rounded-3xl p-8 shadow-xl flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-100 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Founder" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Dr. Kenji Tanaka</h3>
+                        <p class="text-blue-600 font-medium mb-4">Founder & CEO</p>
+                        
+                        <div class="text-gray-700 space-y-4">
+                            <p class="italic text-lg">"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela</p>
+                            
+                            <p>At AI Educational Consultancy, we believe in the transformative power of education. Our mission is to break down barriers and make world-class education accessible to all students, regardless of their background or circumstances.</p>
+                            
+                            <p>With over 15 years of experience in the education sector and a PhD in Educational Technology from the University of Tokyo, I've dedicated my career to helping students achieve their dreams. Our AI-powered platform combines cutting-edge technology with human expertise to provide personalized guidance that truly makes a difference.</p>
+                            
+                            <p>We're not just consultants; we're your partners in success. Let us help you unlock your full potential and embark on an educational journey that will shape your future.</p>
+                        </div>
+                        
+                        <div class="mt-6 flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-blue-600"></i>
+                            </div>
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-twitter text-green-600"></i>
+                            </div>
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-purple-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-20 bg-gray-50 relative">
-        <div class="tokyo-temple"></div>
+        <div class="enhanced-temple"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Success Stories</h2>
@@ -721,9 +914,76 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white relative">
+        <div class="enhanced-temple"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">
+                    <span class="text-gradient-animation">Frequently Asked Questions</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    Find answers to common questions about our services and processes.
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the AI-powered matching system work?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600 pb-4">Our AI system analyzes your academic background, interests, career goals, and preferences to match you with the most suitable universities and programs. It considers factors like admission requirements, scholarship opportunities, location preferences, and career outcomes to provide personalized recommendations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the success rate of your visa applications?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600 pb-4">We maintain a 95% success rate for student visa applications. Our experts provide comprehensive guidance on documentation, interview preparation, and follow-up procedures to maximize your chances of approval.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does the university application process take?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600 pb-4">The complete process typically takes 3-6 months, depending on the country and university requirements. This includes profile evaluation, document preparation, test preparation (if needed), application submission, and visa processing. We recommend starting at least 9-12 months before your intended intake.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you guarantee admission to universities?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600 pb-4">While we cannot guarantee admission as final decisions are made by universities, we have a 95% success rate in securing admissions for our students. We optimize your application to maximize your chances and typically apply to 5-8 universities to ensure multiple options.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What makes your consultancy different from others?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600 pb-4">Our unique combination of AI technology and human expertise sets us apart. We provide data-driven recommendations while maintaining personalized support from experienced counselors. Our end-to-end services cover everything from university selection to pre-departure orientation, and we have partnerships with 50+ universities worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white relative">
-        <div class="tokyo-temple"></div>
+    <section id="contact" class="py-20 bg-gray-50 relative">
+        <div class="enhanced-temple"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in-up">Get In Touch</h2>
@@ -788,7 +1048,7 @@
                 </div>
                 
                 <div class="slide-in-right">
-                    <form id="contactForm" class="bg-gray-50 rounded-3xl p-8">
+                    <form id="contactForm" class="bg-white rounded-3xl p-8 shadow-lg">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
                         
                         <div class="space-y-6">
@@ -1022,6 +1282,8 @@
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('preloader').style.display = 'none';
+            // Animate founder section after page load
+                document.querySelector('.founder-card').classList.add('animate-founder');
             }, 1500);
         });
 
@@ -1229,6 +1491,14 @@
             }
         });
 
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -1278,7 +1548,7 @@
         // Observe sections with progress bars and counters
         observer.observe(document.querySelector('#about'));
 
-        // Typewriter effect - ADDED CODE
+        // Typewriter effect
         const texts = [
             'Empowering Dreams Through Education',
             'Your Success is Our Mission',
@@ -1313,5 +1583,5 @@
         // Start typewriter effect
         setTimeout(typeWriter, 1000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ed37f884217674',t:'MTc1NzgyNDk1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
