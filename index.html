@@ -28,6 +28,7 @@
             color: var(--dark-gray);
             line-height: 1.6;
             overflow-x: hidden;
+            background-color: var(--primary-white);
         }
         
         h1, h2, h3, h4, h5 {
@@ -111,11 +112,12 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--primary-red);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1589308078059-be1415eab4c3?ixlib=rb-4.0.3') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -210,6 +212,62 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            background-color: var(--light-gray);
+        }
+        
+        .founder-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .founder-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .founder-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .founder-quote {
+            flex: 2;
+            min-width: 300px;
+            padding: 30px;
+            background-color: var(--primary-white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .founder-quote:before {
+            content: """;
+            font-size: 5rem;
+            color: var(--light-gray);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-family: sans-serif;
+        }
+        
+        .founder-name {
+            color: var(--primary-red);
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        .founder-title {
+            font-style: italic;
+            color: var(--dark-gray);
         }
         
         /* Services Section */
@@ -484,10 +542,12 @@
             color: var(--primary-white);
             text-decoration: none;
             transition: color 0.3s;
+            display: inline-block;
         }
         
         .footer-links ul li a:hover {
             color: var(--primary-red);
+            transform: translateX(5px);
         }
         
         .newsletter-form {
@@ -679,9 +739,36 @@
             70% {
                 box-shadow: 0 0 0 10px rgba(188, 0, 45, 0);
             }
-            100% {
+           100% {
                 box-shadow: 0 0 0 0 rgba(188, 0, 45, 0);
             }
+        }
+
+        /* Scroll Animation Styles */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Map Container */
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
@@ -700,6 +787,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
+                    <li><a href="#founder">Founder's Message</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#study">Study in Japan</a></li>
                     <li><a href="#stories">Success Stories</a></li>
@@ -741,7 +829,7 @@
                 <h2>About Us</h2>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text scroll-animate">
                     <h3>Your Trusted Partner for Japan Student Visas</h3>
                     <p>Mount Fuji Consultancy, based in Damak, Jhapa, Nepal, specializes in guiding students through the entire process of obtaining a student visa for Japan. With years of experience and a deep understanding of Japanese immigration policies, we make your dream of studying in Japan a reality.</p>
                     <p>Our team of experts provides personalized counseling, document preparation assistance, language training, and continuous support throughout your journey.</p>
@@ -754,8 +842,30 @@
                         <li>Local expertise with global reach</li>
                     </ul>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1598182198871-d3f4ab4fd181?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team at Mount Fuji Consultancy">
+                <div class="about-image scroll-animate">
+                    <img src="#">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder's Message Section -->
+    <section id="founder" class="founder-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Message from Our Founder</h2>
+            </div>
+            <div class="founder-content">
+                <div class="founder-image scroll-animate">
+                    <img src="#">
+                </div>
+                <div class="founder-quote scroll-animate">
+                    <p>"At Mount Fuji Consultancy, we believe that education is the most powerful tool for transforming lives and communities. Our mission is to help Nepalese students achieve their dreams of studying in Japan, a country known for its excellence in education, technology, and culture.</p>
+                    <p>Having experienced the life-changing opportunity of studying abroad myself, I understand both the excitement and challenges that come with this journey. We established Mount Fuji Consultancy to provide comprehensive support to students at every step - from selecting the right program to ensuring a smooth transition to life in Japan.</p>
+                    <p>Our team is committed to maintaining the highest standards of integrity, professionalism, and personalized service. We take pride in the success stories of our students, who are now thriving in various Japanese universities and contributing to strengthening the bond between our two nations.</p>
+                    <p>I invite you to begin your Japanese educational journey with us. Together, let's scale new heights of academic and personal achievement."</p>
+                    <div class="founder-name">Hiroshi Tanaka</div>
+                    <div class="founder-title">Founder & Director, Mount Fuji Consultancy</div>
                 </div>
             </div>
         </div>
@@ -771,42 +881,42 @@
                 <h2>Our Services</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card scroll-animate">
                     <div class="service-icon">
                         <i class="fas fa-passport"></i>
                     </div>
                     <h3>Student Visa Processing</h3>
                     <p>End-to-end guidance and support for your Japan student visa application, ensuring all documentation meets embassy requirements.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card scroll-animate">
                     <div class="service-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <h3>Professional Counseling</h3>
                     <p>One-on-one counseling sessions to help you choose the right course and institution based on your academic background and career goals.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card scroll-animate">
                     <div class="service-icon">
                         <i class="fas fa-language"></i>
                     </div>
                     <h3>Japanese Language Classes</h3>
                     <p>Comprehensive language training to help you achieve the required proficiency for studying and living in Japan.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card scroll-animate">
                     <div class="service-icon">
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <h3>Document Preparation</h3>
                     <p>Assistance with preparing and verifying all necessary documents including academic records, financial statements, and application forms.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card scroll-animate">
                     <div class="service-icon">
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <h3>Interview Preparation</h3>
                     <p>Mock interviews and coaching to help you confidently face the visa interview and increase your chances of success.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card scroll-animate">
                     <div class="service-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
@@ -824,7 +934,7 @@
                 <h2>Study in Japan</h2>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text scroll-animate">
                     <h3>Why Study in Japan?</h3>
                     <p>Japan offers world-class education, cutting-edge technology, and a unique cultural experience. Japanese degrees are recognized globally, and the country provides excellent post-study work opportunities.</p>
                     
@@ -839,7 +949,7 @@
                     
                     <a href="#contact" class="cta-button">Get More Information</a>
                 </div>
-                <div class="about-image">
+                <div class="about-image scroll-animate">
                     <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Japanese University">
                 </div>
             </div>
@@ -856,7 +966,7 @@
                 <h2>Success Stories</h2>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card scroll-animate">
                     <p class="testimonial-text">Mount Fuji Consultancy made my dream of studying in Japan come true. Their guidance through the entire process was invaluable, and I'm now studying at a university in Tokyo.</p>
                     <div class="testimonial-author">
                         <div class="author-image">
@@ -868,7 +978,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card scroll-animate">
                     <p class="testimonial-text">The visa process seemed daunting, but the team at Mount Fuji Consultancy handled everything professionally. I especially appreciated the interview preparation sessions.</p>
                     <div class="testimonial-author">
                         <div class="author-image">
@@ -880,7 +990,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card scroll-animate">
                     <p class="testimonial-text">The language classes were extremely helpful. Not only did I get the required certificate, but I arrived in Japan already able to have basic conversations. Thanks to the great teachers!</p>
                     <div class="testimonial-author">
                         <div class="author-image">
@@ -903,9 +1013,9 @@
                 <h2>Latest Updates</h2>
             </div>
             <div class="blog-grid">
-                <div class="blog-card">
+                <div class="blog-card scroll-animate">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Japan Visa Update">
+                        <img src="#" alt="Japan Visa Update">
                     </div>
                     <div class="blog-content">
                         <p class="blog-date">June 15, 2023</p>
@@ -914,7 +1024,7 @@
                         <a href="#" class="cta-button">Read More</a>
                     </div>
                 </div>
-                <div class="blog-card">
+                <div class="blog-card scroll-animate">
                     <div class="blog-image">
                         <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Japanese University">
                     </div>
@@ -925,7 +1035,7 @@
                         <a href="#" class="cta-button">Read More</a>
                     </div>
                 </div>
-                <div class="blog-card">
+                <div class="blog-card scroll-animate">
                     <div class="blog-image">
                         <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Japanese Culture">
                     </div>
@@ -947,7 +1057,7 @@
                 <h2>Contact Us</h2>
             </div>
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-info scroll-animate">
                     <h3>Get in Touch</h3>
                     <p>Visit our office in Damak or contact us through any of the following methods. Our team is ready to assist you with your journey to studying in Japan.</p>
                     
@@ -992,9 +1102,16 @@
                             <p>Saturday: Closed</p>
                         </div>
                     </div>
+                    
+                    <div class="social-icons" style="margin-top: 30px;">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
-                <div class="contact-form">
+                <div class="contact-form scroll-animate">
                     <h3>Send a Message</h3>
                     <form>
                         <div class="form-group">
@@ -1016,6 +1133,10 @@
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113689.32339029778!2d87.69945805!3d26.667445!2m3!1f0!2f0!3f0!3m2!1i1020!2i768!4f13.1!3m3!1m2!1s0x39ef6ac2014de7c1%3A0x29a91e356d5d74f7!2sDamak!5e0!3m2!1sen!2snp!4v1686740491656!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -1040,6 +1161,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
+                        <li><a href="#founder">Founder's Message</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#study">Study in Japan</a></li>
                         <li><a href="#stories">Success Stories</a></li>
@@ -1112,24 +1234,78 @@
             });
         });
         
-        // Simple animation on scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+        // Scroll animation implementation
+        function checkScroll() {
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.classList.add('animated');
                 }
             });
-        }, observerOptions);
+        }
         
-        document.querySelectorAll('.service-card, .testimonial-card, .blog-card').forEach(card => {
-            observer.observe(card);
-        });
+        // Initial check on page load
+        window.addEventListener('load', checkScroll);
+        // Check on scroll
+        window.addEventListener('scroll', checkScroll);
+        
+        // Form validation
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const messageInput = document.getElementById('message');
+                
+                let isValid = true;
+                
+                if (!nameInput.value.trim()) {
+                    isValid = false;
+                    highlightError(nameInput);
+                } else {
+                    removeHighlight(nameInput);
+                }
+                
+                if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+                    isValid = false;
+                    highlightError(emailInput);
+                } else {
+                    removeHighlight(emailInput);
+                }
+                
+                if (!messageInput.value.trim()) {
+                    isValid = false;
+                    highlightError(messageInput);
+                } else {
+                    removeHighlight(messageInput);
+                }
+                
+                if (isValid) {
+                    // Form is valid, you would normally submit here
+                    alert('Thank you for your message! We will contact you soon.');
+                    contactForm.reset();
+                }
+            });
+        }
+        
+        function highlightError(element) {
+            element.style.borderColor = 'red';
+        }
+        
+        function removeHighlight(element) {
+            element.style.borderColor = '#ddd';
+        }
+        
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
     </script>
 </body>
 </html>
